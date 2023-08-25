@@ -14,15 +14,13 @@
 	   <style>
         body {
             background-color: #202020;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+           
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
         }
         
-        .installation-panel {
+       .installation-panel {
             display: none;
             background-color: #202020;
             border-radius: 10px;
@@ -30,22 +28,6 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             color: white;
-        }
-        
-        .loading-dots {
-            animation: loading 1.5s infinite;
-        }
-        
-        @keyframes loading {
-            0%, 100% {
-                content: ".";
-            }
-            33% {
-                content: "..";
-            }
-            66% {
-                content: "...";
-            }
         }
         
         .finish-button {
@@ -116,16 +98,15 @@
     </div>
 
 
-	  <div class="installation-panel" id="installationPanel">
-    <h1>Installing IPA...</h1>
-    <div class="loading-dots">.</div>
+	<div class="installation-panel" id="installationPanel">
+    <h3>Installing IPA...</h3>
     <p style="font-weight: bold; font-size: 14px;">iCloud Fortnite</p>
-    <div id="finishButton" class="finish-button">Finish!</div>
+    <div id="finishButton" class="finish-button">Please wait while we download the IPA!</div>
 </div>
 
 
 	  <script>
-    const installButton = document.getElementById('installButton');
+   const installButton = document.getElementById('installButton');
     const installationPanel = document.getElementById('installationPanel');
     
     installButton.addEventListener('click', function() {
@@ -133,27 +114,35 @@
         installationPanel.style.display = 'block';
 
         setTimeout(function() {
-            document.querySelector('.loading-dots').style.display = 'none';
-            document.querySelector('h1').textContent = 'Installed IPA!';
+            document.querySelector('h3').textContent = 'Loaded IPA!';
+            document.getElementById("finishButton").innerHTML = "Finish!";
             document.querySelector('#finishButton').style.display = 'block';
+
+            const finishButton = document.getElementById('finishButton');
+            finishButton.addEventListener('click', function() {
+                // Redirect to the specified URL
+                window.location.href = 'https://icloudfortnite.github.io';
+
+
+              setIpaTrue()
+              
+            });
         }, 15000);
     });
 </script>
 
-   
+</body>
+</html>
 
-    <!-- Services Section -->
-    <div class="services" id="services">
-      <h1>Download</h1>
-      <div class="services__wrapper">
-        <div>
-      <button class="main__btn"><a href="#sign-up">Download Latest</a></button>
-        </div>
-         <div>
-        <button class="main__btn"><a href="#sign-up">Download API</a></button>
-             </div>
-      </div>
-    </div>
+
+
+
+
+
+
+</script>
+
+   
 
     <!-- Features Section -->
     <div class="main" id="sign-up">

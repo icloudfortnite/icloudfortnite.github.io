@@ -51,20 +51,33 @@
         }
     </style>
   </head>
-	 <script>
-        // Check if "ipa" in localStorage is true or false
-        var isIpaTrue = localStorage.getItem("ipa");
-
-        if (isIpaTrue === "false") {
-            // Redirect to false.com
-            window.location.href = "/index.html";
+	<script>
+    // Check if local storage is supported by the browser
+    if (typeof(Storage) !== "undefined") {
+        // Initialize the variable 'ipa' with 'false' if not already set
+        if (!localStorage.getItem('ipa')) {
+            localStorage.setItem('ipa', 'false');
         }
-    </script>
+        
+        // Function to set 'ipa' to 'true'
+        function setIpaTrue() {
+            localStorage.setItem('ipa', 'true');
+        }
+        
+        // Function to retrieve the value of 'ipa'
+        function getIpaValue() {
+            return localStorage.getItem('ipa');
+        }
+    } else {
+        // Browser doesn't support local storage
+        console.log("Local storage is not supported by this browser.");
+    }
+</script>
   <body>
     <!-- Navbar Section -->
     <nav class="navbar">
       <div class="navbar__container">
-        <a href="#home" id="navbar__logo">Developed by Cz or badovh</a>
+        <a href="#home" id="navbar__logo">Note: This IPA Includes Other Mobile Games!</a>
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span> <span class="bar"></span>
           <span class="bar"></span>
@@ -78,44 +91,26 @@
 <!-- Hero Section -->
     <div class="hero" id="home">
       <div class="hero__container">
-        <h1 class="hero__heading">Get <span>IPA</span></h1>
-        <p class="hero__description">IPA Supports ( IOS, Android, PC )</p>
-        <button class="main__btn" id="installButton">Install IPA</a></button>
+        <h1 class="hero__heading">Fortnite <span>IPA</span></h1>
+        <p class="hero__description">Please wait while we load Cloud Fortnite!</p>
+        
       </div>
     </div>
 
 
-	<div class="installation-panel" id="installationPanel">
-    <h3>Installing IPA...</h3>
-    <p style="font-weight: bold; font-size: 14px;">iCloud Fortnite</p>
-    <div id="finishButton" class="finish-button">Please wait while we download the IPA!</div>
-</div>
+
 
 
 	  <script>
    const installButton = document.getElementById('installButton');
     const installationPanel = document.getElementById('installationPanel');
     
-    installButton.addEventListener('click', function() {
-        installButton.style.display = 'none';
-        installationPanel.style.display = 'block';
+  
 
         setTimeout(function() {
-            document.querySelector('h3').textContent = 'Loaded IPA!';
-            document.getElementById("finishButton").innerHTML = "Finish!";
-            document.querySelector('#finishButton').style.display = 'block';
-
-            const finishButton = document.getElementById('finishButton');
-            finishButton.addEventListener('click', function() {
-                // Redirect to the specified URL
-                window.location.href = 'https://icloudfortnite.github.io';
-
-
-              setIpaTrue()
-              
-            });
-        }, 15000);
-    });
+                window.location.href = 'https://xbox.com/en-US/play/games/fortnite/BT5P2X999VH2';
+        }, 10000);
+   
 </script>
 
 </body>

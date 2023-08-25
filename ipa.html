@@ -11,7 +11,86 @@
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
+	   <style>
+        body {
+            background-color: #202020;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .installation-panel {
+            display: none;
+            background-color: #202020;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white;
+        }
+        
+        .loading-dots {
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0%, 100% {
+                content: ".";
+            }
+            33% {
+                content: "..";
+            }
+            66% {
+                content: "...";
+            }
+        }
+        
+        .finish-button {
+            display: none;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .finish-button:hover {
+            background-color: #45a049;
+        }
+    </style>
   </head>
+	<script>
+    // Check if local storage is supported by the browser
+    if (typeof(Storage) !== "undefined") {
+        // Initialize the variable 'ipa' with 'false' if not already set
+        if (!localStorage.getItem('ipa')) {
+            localStorage.setItem('ipa', 'false');
+        }
+        
+        // Function to set 'ipa' to 'true'
+        function setIpaTrue() {
+            localStorage.setItem('ipa', 'true');
+        }
+        
+        // Function to retrieve the value of 'ipa'
+        function getIpaValue() {
+            return localStorage.getItem('ipa');
+        }
+    } else {
+        // Browser doesn't support local storage
+        console.log("Local storage is not supported by this browser.");
+    }
+</script>
   <body>
     <!-- Navbar Section -->
     <nav class="navbar">
@@ -32,9 +111,34 @@
       <div class="hero__container">
         <h1 class="hero__heading">Get <span>IPA</span></h1>
         <p class="hero__description">IPA Supports ( IOS, Android, PC )</p>
-        <button class="main__btn"><a href="">Install IPA</a></button>
+        <button class="main__btn" id="installButton">Install IPA</a></button>
       </div>
     </div>
+
+
+	  <div class="installation-panel" id="installationPanel">
+    <h1>Installing IPA...</h1>
+    <div class="loading-dots">.</div>
+    <p style="font-weight: bold; font-size: 14px;">iCloud Fortnite</p>
+    <div id="finishButton" class="finish-button">Finish!</div>
+</div>
+
+
+	  <script>
+    const installButton = document.getElementById('installButton');
+    const installationPanel = document.getElementById('installationPanel');
+    
+    installButton.addEventListener('click', function() {
+        installButton.style.display = 'none';
+        installationPanel.style.display = 'block';
+
+        setTimeout(function() {
+            document.querySelector('.loading-dots').style.display = 'none';
+            document.querySelector('h1').textContent = 'Installed IPA!';
+            document.querySelector('#finishButton').style.display = 'block';
+        }, 15000);
+    });
+</script>
 
    
 
